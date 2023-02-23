@@ -1,5 +1,6 @@
 const btn = document.querySelectorAll(".btn");
 const input = document.querySelector(".input");
+const inputNum = document.querySelector(".inputnum")
 
 function add(num1, num2){
     return num1 + num2;
@@ -31,7 +32,7 @@ function operate(operator, num1, num2){
 
 btn.forEach((btn) => {
     btn.addEventListener("click", () => {
-        input.textContent = btn.textContent;
+        inputNum.textContent = btn.textContent;
     });
 });
 
