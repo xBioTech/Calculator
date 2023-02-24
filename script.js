@@ -50,6 +50,10 @@ btn.addEventListener("click", () => {
 });
 });
 
-
+equal.addEventListener("click", () => {
+    newNumber = inputNum.textContent;
+    result = operate(selectedOperator, +previousNumber, +newNumber);
+    inputNum.textContent = result;
+});
 
 
