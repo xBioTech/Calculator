@@ -1,6 +1,8 @@
 const btn = document.querySelectorAll(".btn");
 const input = document.querySelector(".input");
-const inputNum = document.querySelector(".inputnum")
+const inputNum = document.querySelector(".inputnum");
+const equal = document.querySelector(".equal");
+const operator = document.querySelectorAll(".operator");
 
 function add(num1, num2){
     return num1 + num2;
@@ -36,4 +38,18 @@ btn.forEach((btn) => {
     });
 });
 
-const displayValue = input.value;
+let previousNumber = "";
+let selectedOperator = "";
+let result = "";
+let newNumber = "";
+
+operator.forEach((btn) => {
+btn.addEventListener("click", () => {
+    previousNumber = inputNum.textContent;
+    selectedOperator = btn.textContent;
+});
+});
+
+
+
+
