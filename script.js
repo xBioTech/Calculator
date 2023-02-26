@@ -41,7 +41,7 @@ btn.forEach((btn) => {
 
 let previousNumber = "";
 let selectedOperator = "";
-let result = "";
+let result = null;
 let currentNumber = "";
 
 operator.forEach((btn) => {
@@ -54,8 +54,15 @@ btn.addEventListener("click", () => {
 
 equal.addEventListener("click", () => {
     let newNumber = currentNumber;
-    result = operate(selectedOperator, +previousNumber, +newNumber);
+    if(result === null){
+        result = operate(selectedOperator, +previousNumber, +newNumber);
+    } else {
+        result = operate(selectedOperator, result, +newNumber);
+    }
     inputNum.textContent = result;
+    previousNumber = "";
+    selectedOperator = "";
+    newNumber = "";
 });
 
 
