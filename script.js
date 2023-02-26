@@ -34,24 +34,26 @@ function operate(operator, num1, num2){
 
 btn.forEach((btn) => {
     btn.addEventListener("click", () => {
-        inputNum.textContent = btn.textContent;
+        currentNumber += btn.textContent;
+        inputNum.textContent = currentNumber;
     });
 });
 
 let previousNumber = "";
 let selectedOperator = "";
 let result = "";
-let newNumber = "";
+let currentNumber = "";
 
 operator.forEach((btn) => {
 btn.addEventListener("click", () => {
-    previousNumber = inputNum.textContent;
+    previousNumber = currentNumber;
     selectedOperator = btn.textContent;
+    currentNumber = "";
 });
 });
 
 equal.addEventListener("click", () => {
-    newNumber = inputNum.textContent;
+    let newNumber = currentNumber;
     result = operate(selectedOperator, +previousNumber, +newNumber);
     inputNum.textContent = result;
 });
