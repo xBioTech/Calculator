@@ -3,6 +3,8 @@ const input = document.querySelector(".input");
 const inputNum = document.querySelector(".inputnum");
 const equal = document.querySelector(".equal");
 const operator = document.querySelectorAll(".operator");
+const clear = document.querySelector(".clear");
+const del = document.querySelector(".delete");
 
 function add(num1, num2){
     return num1 + num2;
@@ -66,3 +68,11 @@ equal.addEventListener("click", () => {
 });
 
 
+
+clear.addEventListener("click", () => {
+    inputNum.textContent = 0;
+    previousNumber = "";
+    selectedOperator = "";
+    result = null;
+    currentNumber = "";
+});
