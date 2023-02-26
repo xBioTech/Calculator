@@ -76,3 +76,8 @@ clear.addEventListener("click", () => {
     result = null;
     currentNumber = "";
 });
+
+del.addEventListener("click", () => {
+    inputNum.textContent = 0;
+    currentNumber = "";
+});
