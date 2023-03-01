@@ -5,6 +5,7 @@ const equal = document.querySelector(".equal");
 const operator = document.querySelectorAll(".operator");
 const clear = document.querySelector(".clear");
 const del = document.querySelector(".delete");
+const memoryNum = document.querySelector(".memorynum");
 
 function add(num1, num2){
     return num1 + num2;
@@ -48,28 +49,39 @@ let currentNumber = "";
 
 operator.forEach((btn) => {
 btn.addEventListener("click", () => {
-    previousNumber = currentNumber;
+    if(btn.textContent === "+" || btn.textContent === "-" || btn.textContent === "*" || btn.textContent === "/"){
+        memoryNum.textContent = inputNum.textContent;
+    }
+    if (previousNumber !== "" && selectedOperator !== "") {
+        result = operate(selectedOperator, +previousNumber, +currentNumber);
+        previousNumber = result
+        inputNum.textContent = previousNumber;
+        currentNumber = "";
+    } else {
+        previousNumber = currentNumber;
+        currentNumber = "";
+    }
+    memoryNum.textContent += inputNum.textContent + " " + btn.textContent + " ";
     selectedOperator = btn.textContent;
-    currentNumber = "";
 });
 });
 
 equal.addEventListener("click", () => {
-    let newNumber = currentNumber;
-    if(result === null){
-        result = operate(selectedOperator, +previousNumber, +newNumber);
-    } else {
-        result = operate(selectedOperator, result, +newNumber);
+    if(previousNumber !== "" && selectedOperator !== "" && currentNumber !== ""){
+        result = operate(selectedOperator, +previousNumber, +currentNumber);
     }
+    memoryNum.textContent += previousNumber;
+    memoryNum.textContent += equal.textContent; 
     inputNum.textContent = result;
     previousNumber = "";
     selectedOperator = "";
-    newNumber = "";
+    currentNumber = result;
 });
 
 
 
 clear.addEventListener("click", () => {
+    memoryNum.textContent = "";
     inputNum.textContent = 0;
     previousNumber = "";
     selectedOperator = "";
