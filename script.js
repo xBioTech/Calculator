@@ -55,13 +55,14 @@ btn.addEventListener("click", () => {
     if (previousNumber !== "" && selectedOperator !== "") {
         result = operate(selectedOperator, +previousNumber, +currentNumber);
         previousNumber = result
+        memoryNum.textContent = previousNumber;
         inputNum.textContent = previousNumber;
         currentNumber = "";
     } else {
         previousNumber = currentNumber;
         currentNumber = "";
     }
-    memoryNum.textContent += inputNum.textContent + " " + btn.textContent + " ";
+    memoryNum.textContent += " " + btn.textContent + " ";
     selectedOperator = btn.textContent;
 });
 });
@@ -70,8 +71,8 @@ equal.addEventListener("click", () => {
     if(previousNumber !== "" && selectedOperator !== "" && currentNumber !== ""){
         result = operate(selectedOperator, +previousNumber, +currentNumber);
     }
-    memoryNum.textContent += previousNumber;
-    memoryNum.textContent += equal.textContent; 
+    memoryNum.textContent += currentNumber;
+    memoryNum.textContent += " " + equal.textContent; 
     inputNum.textContent = result;
     previousNumber = "";
     selectedOperator = "";
